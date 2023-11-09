@@ -1,0 +1,68 @@
+<body>
+  <div class="main-div">
+    <div class="imgcontainer">
+      <img src="assets/logo.png" alt="Fintech" class="avatar" />
+    </div>
+
+    <form (ngSubmit)="postData()">
+      <div class="container">
+        <div class="success-alert" *ngIf="Status.status_code === 1000">
+          <span
+            class="closebtn"
+            onclick="this.parentElement.style.display='none';"
+            >&times;</span
+          >
+          {{ Status.status_message }}
+        </div>
+        <div
+          class="alert"
+          *ngIf="Status.status_code !== 1000 && Status.status_code !== 0"
+        >
+          <span
+            class="closebtn"
+            onclick="this.parentElement.style.display='none';"
+            >&times;</span
+          >
+          {{ Status.status_message }}
+        </div>
+
+        <div id="toast-container"></div>
+        <label for="phone"><b>Phone Number</b></label>
+        <input
+          type="tel"
+          placeholder="Enter Phone Number in the format 07xxxxx"
+          name="phone"
+          required
+          [(ngModel)]="formData.phone"
+          maxlength="10"
+          onkeydown="javascript: return event.keyCode == 69 ? false : true"
+        />
+
+        <label for="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          required
+          [(ngModel)]="formData.password"
+        />
+        <div>
+          <button type="submit">Login</button>
+        </div>
+        <div class="text-div">
+          <span>or</span>
+        </div>
+
+        <div>
+          <button
+            class="login-button"
+            type="button"
+            (click)="redirectToRegisterPage()"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
